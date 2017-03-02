@@ -5,6 +5,38 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articleOne = {
+    title: 'Article One | Monalisa banerjee',
+    heading: 'Articlew One',
+    content:`<p>This is my first article. How are you? i'm good! How are you? I'm good!</p>
+            
+            <p>This is my first article. How are you? i'm good! How are you? I'm good!</p>
+            
+            <p>This is my first article. How are you? i'm good! How are you? I'm good!</p>`
+    
+};
+function createtenplate(data){
+var content = data.content;
+var htmlContent = {`<!DOCTYPE html>
+        <head><title> article one | Monalisa Banerjee</title>
+        <link href="/ui/style.css" rel="stylesheet" />
+        </head>
+        <body> 
+        <div class= 'cls'>
+            <div>
+                <a href="/">Home</a>
+            </div>
+            <h3>
+                Article one
+            </h3>
+            <div>
+                ${content}
+            </div>
+         </div>
+        </body>
+</html>
+`;
+}
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
