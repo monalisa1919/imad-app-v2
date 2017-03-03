@@ -41,6 +41,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+//End point counter - increment by one everytime the page is visited 
+var counter =0;
+aap.get('/counter', function(req,res) {
+    counter = counter +1;
+    res.send(counter.toString());
+});
+
 app.get('/article-one', function(req, res){
     res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
     //res.send('Article one requested and will be served here');
