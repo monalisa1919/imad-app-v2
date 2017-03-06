@@ -9,7 +9,7 @@ var config = {
     database: '	monalisa1919',
     host: 'db.imad.hasura-app.io',
     password: process.env.DB_PASSWORD
-}
+};
 var app = express();
 app.use(morgan('combined'));
 
