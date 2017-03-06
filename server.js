@@ -23,7 +23,7 @@ app.use(morgan('combined'));
             <p>This is my first article. How are you? i'm good! How are you? I'm good!</p>`
     
 };
-function createtenplate(data){
+function createtemplate(data){
 var content = data.content;
 var htmlContent = {`<!DOCTYPE html>
         <head><title> article one | Monalisa Banerjee</title>
