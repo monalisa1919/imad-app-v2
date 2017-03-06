@@ -2,6 +2,14 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 
+var Pool = require('pg').Pool;
+
+var config = {
+    user: '	monalisa1919',
+    database: '	monalisa1919',
+    host: 'db.imad.hasura-app.io',
+    password: process.env.DB_PASSWORD
+}
 var app = express();
 app.use(morgan('combined'));
 
@@ -39,6 +47,19 @@ var htmlContent = {`<!DOCTYPE html>
 }*/
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
+
+var pool = new Pool(config);
+
+app.get('/test-db', function(req,res) {
+    pool.query('SELECT * FROM TEST', function(err,result){
+        if(err)
+        {
+            res.status(500).send(err.toString());
+        }else{
+            res.send(JSON.stringlfy(result));
+        }
+    });
 });
 
 //End point counter - increment by one everytime the page is visited 
